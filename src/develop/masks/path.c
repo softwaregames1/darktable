@@ -3445,6 +3445,8 @@ static int _path_events_mouse_scrolled(dt_iop_module_t *module,
         // legacy resize: scale all nodes towards/away from the centroid
         if(!_path_resize_centroid(form, up))
           return 1;
+        // the scaled outline is the new baseline for shrink/grow
+        _resize_state_invalidate(form->formid);
       }
       else if(gui->edit_mode == DT_MASKS_EDIT_FULL)
       {
